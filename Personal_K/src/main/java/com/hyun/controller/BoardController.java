@@ -3,13 +3,14 @@ package com.hyun.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hyun.service.BoardService;
 import com.hyun.vo.BoardVO;
-import com.hyun.vo.Criteria;
 import com.hyun.vo.PageMaker;
+import com.hyun.vo.SearchCriteria;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,15 +43,15 @@ public class BoardController {
 	
 	/* # 게시글 목록 조회 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Criteria cri, Model model) throws Exception {
+	public String list(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
 		
 		logger.info("게시글 목록 조회 GET");
 		
-		model.addAttribute("list", service.list(cri));
+		model.addAttribute("list", service.list(scri));
 		
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.listCount());
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service.listCount(scri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
