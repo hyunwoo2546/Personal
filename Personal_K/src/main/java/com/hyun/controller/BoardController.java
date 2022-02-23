@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hyun.service.BoardService;
 import com.hyun.vo.BoardVO;
+import com.hyun.vo.Criteria;
+import com.hyun.vo.PageMaker;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,11 +42,17 @@ public class BoardController {
 	
 	/* # 게시글 목록 조회 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model) throws Exception {
+	public String list(Criteria cri, Model model) throws Exception {
 		
 		logger.info("게시글 목록 조회 GET");
 		
-		model.addAttribute("list", service.list());
+		model.addAttribute("list", service.list(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listCount());
+		
+		model.addAttribute("pageMaker", pageMaker);
 		
 		return "board/list";
 	}

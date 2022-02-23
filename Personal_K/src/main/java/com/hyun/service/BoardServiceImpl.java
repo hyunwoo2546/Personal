@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hyun.dao.BoardDAO;
 import com.hyun.vo.BoardVO;
+import com.hyun.vo.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -22,8 +23,14 @@ public class BoardServiceImpl implements BoardService{
 	
 	/* # 게시물 목록 조회 */
 	@Override
-	public List<BoardVO> list() throws Exception {
-		return boardDAO.list();
+	public List<BoardVO> list(Criteria cri) throws Exception {
+		return boardDAO.list(cri);
+	}
+	
+	/* # 게시물 총 갯수 */
+	@Override
+	public int listCount() throws Exception {
+		return boardDAO.listCount();
 	}
 	
 	/* # 특정 게시글 조회 */

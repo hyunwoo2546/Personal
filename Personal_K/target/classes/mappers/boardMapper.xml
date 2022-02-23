@@ -18,13 +18,31 @@
    </insert>
 
 	<!-- # 게시글 목록 조회 -->   
-   <select id="list" resultType="com.hyun.vo.BoardVO">
-		SELECT   BNO
-			   , TITLE
-			   , WRITER
-			   , REGDATE
-		  FROM MP_BOARD
-		  ORDER BY BNO DESC
+	<select id="listPage" resultType="com.hyun.vo.BoardVO" parameterType="com.hyun.vo.Criteria">
+		SELECT  BNO, 
+		        TITLE, 
+		        WRITER, 
+		        REGDATE
+		 FROM ( 
+		        SELECT BNO, 
+		               TITLE, 
+		               CONTENT, 
+		               WRITER, 
+		               REGDATE, 
+		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
+		         FROM MP_BOARD
+		                       )
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY BNO DESC
+	</select>
+	
+	<!-- # 게시물 총 갯수 -->
+	<select id="listCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(BNO)
+			FROM MP_BOARD
+			WHERE BNO > 0
+		]]>
 	</select>
 	
 	<!-- # 특정 게시글 조회 -->

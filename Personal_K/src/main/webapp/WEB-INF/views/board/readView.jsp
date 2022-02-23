@@ -33,7 +33,9 @@
 			
 			/* # 목록 버튼 */
 			$(".list_btn").on("click", function () {
-				location.href = "/boadr/list";
+				formObj.attr("action","/board/list");
+				formObj.attr("method","get");
+				formObj.submit();
 			})
 		})
 	</script>
