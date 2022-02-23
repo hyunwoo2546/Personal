@@ -50,7 +50,7 @@
 						</select>
 						
 						<input type="text" name="keyword" id="keywordInput" value="${scri.keyword }" />
-						<button id = "searchBtn" type="button">검색</button>
+						<button id = "searchBtn" type="submit">검색</button>
 						
 						<script type="text/javascript">
 							$(function () {

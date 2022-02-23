@@ -20,7 +20,7 @@
 				if(fn_valiChk()) {
 					return false;
 				}
-				formObj.attr("action", "board/update");
+				formObj.attr("action", "/board/update");
 				formObj.attr("method", "post");
 				formObj.submit();
 			})
@@ -53,7 +53,7 @@
 			<hr />
 			
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/board/update">
+				<form name="updateForm" role="form" method="post" action="#">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
 					<table>
 						<tbody>
