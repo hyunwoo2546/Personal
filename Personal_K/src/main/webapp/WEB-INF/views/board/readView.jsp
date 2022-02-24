@@ -33,9 +33,11 @@
 			
 			/* # 목록 버튼 */
 			$(".list_btn").on("click", function () {
-				formObj.attr("action","/board/list");
-				formObj.attr("method","get");
-				formObj.submit();
+				event.preventDefault();
+				location.href = "/board/list?page=${scri.page}"
+						+ "&perPageNum=${scri.perPageNum}"
+						+ "&searchType=${scri.searchType}"
+						+ "&keyword=${scri.keyword}";
 			})
 		})
 	</script>
@@ -55,6 +57,11 @@
 			
 			<section id="container">
 				<form role="form" method="post" name="readForm">
+					<input type="hidden" id = "bno" name="bno" value="${read.bno }">
+					<input type="hidden" id = "page" name="page" value="${scri.page }">
+					<input type="hidden" id = "perPageNum" name="perPageNum" value="${scri.perPageNum }">
+					<input type="hidden" id = "searchType" name="searchType" value="${scri.searchType }">
+					<input type="hidden" id = "keyword" name="keyword" value="${scri.keyword }">
 					<table>
 						<tbody>
 							<tr>

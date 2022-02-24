@@ -30,7 +30,13 @@
 							<tr>
 								<td><c:out value="${list.bno}" /></td>
 								<td>
-								<a href="/board/readView?bno=${list.bno}"><c:out value="${list.title}" /></a>
+									<a href="/board/readView?bno=${list.bno}&
+																	page=${scri.page}&
+																	perPageNum=${scri.perPageNum}&
+																	searchType=${scri.searchType}&
+																	keyword=${scri.keyword}">
+									<c:out value="${list.title}" />
+								</a>
 								</td>
 								<td>
 								<c:out value="${list.writer}" />
@@ -50,7 +56,7 @@
 						</select>
 						
 						<input type="text" name="keyword" id="keywordInput" value="${scri.keyword }" />
-						<button id = "searchBtn" type="button">검색</button>
+						<button id = "searchBtn" type="submit">검색</button>
 						
 						<script type="text/javascript">
 							$(function () {

@@ -12,7 +12,11 @@
 			
 			$(".cancel_btn").on("click", function(){
 				event.preventDefault();
-				location.href = "/board/list";
+				location.href = "/board/readView?bno=${update.bno}"
+								+ "&page=${scri.page}"
+								+ "&perPageNum=${scri.perPageNum}"
+								+ "&searchType=${scri.searchType}"
+								+ "&keyword=${scri.keyword}";
 			})
 		
 		
@@ -20,7 +24,7 @@
 				if(fn_valiChk()) {
 					return false;
 				}
-				formObj.attr("action", "board/update");
+				formObj.attr("action", "/board/update");
 				formObj.attr("method", "post");
 				formObj.submit();
 			})
@@ -53,7 +57,7 @@
 			<hr />
 			
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/board/update">
+				<form name="updateForm" role="form" method="post" action="#">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
 					<table>
 						<tbody>

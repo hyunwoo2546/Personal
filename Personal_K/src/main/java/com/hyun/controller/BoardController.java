@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hyun.service.BoardService;
 import com.hyun.vo.BoardVO;
@@ -60,43 +61,55 @@ public class BoardController {
 	
 	/* # 특정 게시글 조회 */
 	@RequestMapping(value = "/readView", method = RequestMethod.GET)
-	public String read(BoardVO vo, Model model) throws Exception {
+	public String read(BoardVO vo, Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 		
 		logger.info("특정 게시글 조회 GET");
 		
 		model.addAttribute("read",service.read(vo.getBno()));
+		model.addAttribute("scri", scri);
 
 		return "board/readView";
 	}
 	
 	/* # 게시글 수정 폼 GET */
 	@RequestMapping(value = "/updateView", method = RequestMethod.GET)
-	public String updateView(BoardVO vo,Model model) throws Exception {
+	public String updateView(BoardVO vo,Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 		logger.info("게시글 수정 폼 GET");
 		
 		model.addAttribute("update",service.read(vo.getBno()));
+		model.addAttribute("scri", scri);
 		
 		return "board/updateView";
 	}
 	
-	/* # 게시글 수정 */
+	/* # 게시글 수정 POST*/
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(BoardVO vo) throws Exception {
+	public String update(BoardVO vo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		
 		logger.info("수정한 게시글 번호 : " + vo.getBno());
 		
 		service.update(vo);
+		
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
 		
 		return "redirect:/board/list";
 	}
 	
 	/* # 게시글 삭제 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(BoardVO vo) throws Exception {
+	public String delete(BoardVO vo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 
 		logger.info("삭제된 게시글 번호 : " + vo.getBno());
 		
 		service.delete(vo.getBno());
+		
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
 		
 		return "redirect:/board/list";
 	}
