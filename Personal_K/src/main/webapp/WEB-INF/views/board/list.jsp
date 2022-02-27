@@ -38,7 +38,7 @@
 																	page=${scri.page}&
 																	perPageNum=${scri.perPageNum}&
 																	searchType=${scri.searchType}&
-																	keyword=${scri.keyword}">
+						  											keyword=${scri.keyword}">
 									<c:out value="${list.title}" />
 								</a>
 								</td>
