@@ -25,7 +25,7 @@
 				<%@include file = "nav.jsp" %>
 			</div>
 			<hr />
-			
+			 
 			<section class="container">
 				<form role="form" method="get">
 					<table class="table table-hover">
