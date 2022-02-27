@@ -16,7 +16,7 @@
 	$(document).ready(function () {
 		/* # 취소 버튼 */
 		$(".cancle").on("click", function () {
-			location.href = "/login";
+			location.href = "/member/login";
 		});
 		
 		/* # 무결성 체크 */
