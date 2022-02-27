@@ -120,7 +120,7 @@
 					<button type="submit" class="delete_btn btn btn-danger">삭제</button>
 					<button type="submit" class="list_btn btn btn-primary">목록</button>	
 				</div>
-				
+				 
 				<!-- # 댓글 수정/삭제 -->
 				<div id="reply">
 					<ol class="replyList">
