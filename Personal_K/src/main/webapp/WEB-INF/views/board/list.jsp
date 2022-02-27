@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<!-- 부가적인 테마 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	 	<title>게시판</title>
 	 	<style type="text/css">
 	 		li {
@@ -66,7 +67,7 @@
 						<script type="text/javascript">
 							$(function () {
 								$('#searchBtn').click(function () {
-									self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() 
+									self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val();
 								});
 							});
 						</script>
