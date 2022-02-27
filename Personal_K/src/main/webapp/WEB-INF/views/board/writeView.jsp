@@ -21,7 +21,7 @@
 				formObj.attr("method","post");
 				formObj.submit();
 			})
-		})
+		}) 
 		
 		/* # 벨리데이션 체크 함수 */
 		function fn_valiChk(){
