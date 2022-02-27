@@ -13,7 +13,7 @@
 	 			list-style : none; float: left; padding: 6px;
 	 		}
 	 	</style>
-	</head>
+	</head>      
 	<body>
 		<div class="container">
 			<header>
