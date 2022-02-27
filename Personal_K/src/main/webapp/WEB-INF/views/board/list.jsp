@@ -90,7 +90,7 @@
 					</div>
 				</form>
 			</section>
-			<hr />
+			<hr />  
 		</div>
 	</body>
 </html> 
