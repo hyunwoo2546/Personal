@@ -17,7 +17,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<h1 align="center"> 게시판 </h1>
+				<h1 align="center"> 게시판 고쳐진건가? </h1>
 			</header>
 			<hr />
 			
