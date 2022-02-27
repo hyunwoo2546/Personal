@@ -72,7 +72,7 @@
 						</script>
 						 
 					</div>
-					<!-- # 페이징 -->
+					<!-- # 페이징 -->  
 					<div class="col-md-offset-3">
 					  <ul class="pagination">
 					    <c:if test="${pageMaker.prev}">
