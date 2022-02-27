@@ -17,7 +17,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<h1> 게시판</h1>
+				<h1 align="center"> 게시판 </h1>
 			</header>
 			<hr />
 			
@@ -93,6 +93,7 @@
 			<hr />
 		</div>
 	</body>
+<<<<<<< HEAD
 <html>
 	<head>
 	 	<title>게시판</title>
@@ -181,3 +182,6 @@
 		</div>
 	</body>
 </html>
+=======
+</html> 
+>>>>>>> refs/remotes/origin/hyunwoo
