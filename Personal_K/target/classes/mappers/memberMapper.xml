@@ -28,4 +28,10 @@
 		USERNAME = #{userName}
 		WHERE USERID = #{userId}
 	</update>
+	
+	<!-- # 회원 탈퇴 -->
+	<delete id="memberDelete">
+		DELETE FROM MP_MEMBER
+		WHERE USERID = #{userId} AND USERPASS = #{userPass}
+	</delete>
 </mapper>

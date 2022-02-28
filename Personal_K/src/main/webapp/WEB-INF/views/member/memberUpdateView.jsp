@@ -31,6 +31,11 @@
 			}
 			alert('회원정보 수정이 완료되었습니다. 다시 로그인 해주시기 바랍니다.')
 		});
+		
+		/* # 회원탈퇴 */
+		$(".delete").on("click", function () {
+			location.href = "/member/memberDeleteView";
+		});
 	})
 </script>
 <body>
@@ -50,6 +55,7 @@
 				</div>
 				<div class="form-group has-feedback">
 					<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
+					<button class="delete btn btn-primary" type="button">회원탈퇴</button>
 					<button class="cancle btn btn-danger" type="button">취소</button>
 				</div>
 			</form>

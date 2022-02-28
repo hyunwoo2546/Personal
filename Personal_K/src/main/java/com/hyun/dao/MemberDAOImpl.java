@@ -30,4 +30,10 @@ public class MemberDAOImpl implements MemberDAO{
 		sql.update("memberMapper.memberUpdate",vo);
 	}
 	
+	/* # 회원탈퇴 */
+	@Override
+	public void memberDelete(MemberVO vo) throws Exception {
+		sql.delete("memberMapper.memberDelete",vo);
+	}
+	
 }
