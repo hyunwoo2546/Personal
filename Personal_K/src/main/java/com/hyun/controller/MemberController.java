@@ -39,7 +39,7 @@ public class MemberController {
 		
 		service.register(vo);
 		
-		return null;
+		return "redirect:/board/list";
 	}
 	
 	/* # 로그인 GET */
@@ -90,6 +90,30 @@ public class MemberController {
 		
 		session.invalidate();
 		
+		return "redirect:/board/list";
+	}
+	
+	/* # 회원탈퇴 GET */
+	@RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
+	public String memberDeleteView() throws Exception{
+		return "member/memberDeleteView";
+	}
+	
+	/* # 회원탈퇴 POST */
+	@RequestMapping(value = "/memberDelete", method = RequestMethod.POST)
+	public String memberDelete(MemberVO vo, HttpSession session,RedirectAttributes rttr) throws Exception{
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
+		String sessionPass = member.getUserPass();
+		String voPass = vo.getUserPass();
+		
+		if (!(sessionPass.equals(voPass))) {
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:/member/memberDeleteView";
+		}
+		
+		service.memberDelete(vo);
+		session.invalidate();
 		return "redirect:/board/list";
 	}
 	
