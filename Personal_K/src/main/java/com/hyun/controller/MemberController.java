@@ -44,8 +44,10 @@ public class MemberController {
 	
 	/* # 로그인 GET */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void login() {
+	public String login() {
 		log.info("로그인 폼");
+		
+		return "member/login";
 	}
 	
 	/* # 로그인 POST */
@@ -68,6 +70,23 @@ public class MemberController {
 	/* # 로그아웃 GET */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
+		
+		session.invalidate();
+		
+		return "redirect:/board/list";
+	}
+	
+	/* # 회원정보 수정 GET */
+	@RequestMapping(value = "memberUpdateView", method = RequestMethod.GET)
+	public String registerUpdateView() throws Exception {
+		return "member/memberUpdateView";
+	}
+	
+	/* # 회원정보 수정 POST*/
+	@RequestMapping(value = "memberUpdate", method = RequestMethod.POST)
+	public String registerUpdate(MemberVO vo,HttpSession session) throws Exception {
+		
+		service.memberUpdate(vo);
 		
 		session.invalidate();
 		

@@ -64,14 +64,6 @@
 			</div>
 			<button type="button" id = "join">회원가입</button>
 		</c:if>
-		
-		<!-- # 로그인 한 사용자 -->
-		<c:if test="${member != null }">
-			<div>
-				<p>${member.userId }님 환영합니다.</p>
-				<button id = "logoutBtn" type="button">로그아웃</button>
-			</div>
-		</c:if>
 	</form>
 </body>
 </html>

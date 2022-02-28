@@ -12,12 +12,13 @@
 		<c:if test="${member == null }">
 			<a href = "/member/login">로그인</a>
 		</c:if>
-		<c:if test="${member != null }"><a href = "/member/logout">로그아웃</a></c:if>	
-		<!-- # 로그인 실패 -->
 	</li>
 	<li>
 		<c:if test="${member != null }">
 			<p>${member.userId }님 안녕하세요.</p>
+			<p>${member.userName }님 안녕하세요.</p>
+			<a href = "/member/memberUpdateView">회원정보 수정</a>
+			<a href = "/member/logout">로그아웃</a>
 		</c:if>
 	</li>
 </ul>
