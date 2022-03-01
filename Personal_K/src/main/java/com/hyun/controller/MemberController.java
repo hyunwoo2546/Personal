@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hyun.service.MemberService;
@@ -115,6 +116,15 @@ public class MemberController {
 		service.memberDelete(vo);
 		session.invalidate();
 		return "redirect:/board/list";
+	}
+	
+	/* # 패스워드 체크 */
+	@ResponseBody
+	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
+	public int passChk(MemberVO vo) throws Exception {
+		log.info("패스워드 체크");
+		int result = service.passChk(vo);
+		return result;
 	}
 	
 }
