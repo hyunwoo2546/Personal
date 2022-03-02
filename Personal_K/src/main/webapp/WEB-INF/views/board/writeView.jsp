@@ -47,7 +47,7 @@
 			</div>
 			<hr />
 			<section id="container">
-				<form role="form" method="post" action="/board/write" name="writeForm">
+				<form role="form" method="post" action="/board/write" name="writeForm" enctype="multipart/form-data">
 					<table>
 						<tbody>
 							<c:if test="${member.userId != null }">
@@ -64,6 +64,11 @@
 							<tr>
 								<td>
 									<label for="writer">작성자</label><input type="text" id="writer" name="writer" class="chk" title="작성자를 입력해주세요." />
+								</td>
+							<tr>
+							<tr>
+								<td>
+									<input type="file" name="file" />
 								</td>
 							<tr>
 								<td>						

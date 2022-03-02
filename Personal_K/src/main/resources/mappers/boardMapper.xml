@@ -6,12 +6,15 @@
 <mapper namespace="boardMapper">
 	
 	<!-- # 게시글 작성 -->
-	<insert id="insert">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="bno" parameterType="com.hyun.vo.BoardVO">
+		<selectKey keyProperty="bno" resultType="int" order= "BEFORE">
+			SELECT MP_BOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 	   INSERT INTO MP_BOARD(    BNO 
 	   					      , TITLE 
 	   					      , CONTENT 
 	   					      , WRITER  )
-	                 VALUES(    MP_BOARD_SEQ.NEXTVAL 
+	                 VALUES(    #{bno} 
 	                 		  , #{title}
 	                 		  , #{content}
 	                 		  , #{writer}  )
@@ -82,5 +85,22 @@
 		  FROM MP_BOARD
 		 WHERE BNO = #{bno}
 	</delete>
+	
+	<!-- # 첨부파일 업로드 -->
+	<insert id="insertFile" parameterType="hashMap">
+		INSERT INTO MP_FILE(
+			FILE_NO,
+			BNO,
+			ORG_FILE_NAME,
+			STORED_FILE_NAME,
+			FILE_SIZE
+		)VALUES(
+			SEQ_MP_FILE_NO.NEXTVAL,
+			#{BNO},
+			#{ORG_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE}
+		)
+    </insert>
 	
 </mapper>
