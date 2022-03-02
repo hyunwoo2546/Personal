@@ -1,11 +1,15 @@
 package com.hyun.service;
 
 import java.util.List;
+import java.util.Map;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hyun.dao.BoardDAO;
+import com.hyun.util.FileUtils;
 import com.hyun.vo.BoardVO;
 import com.hyun.vo.SearchCriteria;
 
@@ -15,10 +19,19 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardDAO boardDAO;
 	
+	@Autowired
+	private FileUtils fileUtils;
+	
 	/* # 게시글 작성 */
 	@Override
-	public void write(BoardVO vo) throws Exception{
-		boardDAO.write(vo);
+	public void write(BoardVO vo, MultipartHttpServletRequest mpRequest) throws Exception{
+		boardDAO.write(vo,mpRequest);
+		
+		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(vo, mpRequest);
+		int size = list.size();
+		for(int i = 0; i < size; i++) {
+			boardDAO.insertFile(list.get(i));
+		}
 	}
 	
 	/* # 게시물 목록 조회 */

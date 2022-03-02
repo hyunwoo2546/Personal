@@ -1,10 +1,12 @@
 package com.hyun.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hyun.vo.BoardVO;
 import com.hyun.vo.SearchCriteria;
@@ -17,7 +19,7 @@ public class BoardDAOImpl implements BoardDAO{
 	
 	/* # 게시글 작성 */
 	@Override
-	public void write(BoardVO vo) throws Exception {
+	public void write(BoardVO vo, MultipartHttpServletRequest mpRequest) throws Exception {
 		sqlSession.insert("boardMapper.insert", vo);
 	}
 	
@@ -50,6 +52,12 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public void delete(int bno) throws Exception {
 		sqlSession.delete("boardMapper.delete", bno);
+	}
+	
+	/* # 첨부파일 업로드 */
+	@Override
+	public void insertFile(Map<String, Object> map) throws Exception {
+		sqlSession.insert("boardMapper.insertFile",map);
 	}
 	
 }
