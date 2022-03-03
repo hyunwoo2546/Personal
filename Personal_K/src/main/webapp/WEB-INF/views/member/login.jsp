@@ -37,16 +37,36 @@
 				$("#userPass").focus();
 				return false;
 			}
-			if(${msg == false}) {
-				alert("로그인 실패")
-				return false;
-			}
 		});
 		
+		/* # 로그인 버튼 */
+		$("#loginBtn").on("click", function () {
+			
+			var user= {
+					userId: $('#userId').val(),
+					userPass: $('#userPass').val()
+			};
+			/* - 로그인 ajax */
+			$.ajax({
+				type : 'POST',
+				url : '/member/login',
+				data : user,
+				success : function (data) {
+					if(data === true) {
+						alert("로그인 성공");
+						window.location.href = "/board/list";
+					} else {
+						alert('로그인 실패');
+					}
+				}
+			});
+			
+			
+		});
 	})
 </script>
 <body>
-	<form action="/member/login" method="post" name="loginForm">
+	<form name="loginForm" id = "loginForm">
 		<!-- # 로그인 안된 사용자 -->
 		<c:if test="${member == null }">
 			<div>
@@ -59,7 +79,7 @@
 			</div>
 			<div id="loginCheck">
 				<div>
-					<button type="submit">로그인</button>
+					<button type="button" id = "loginBtn">로그인</button>
 				</div>
 			</div>
 			<button type="button" id = "join">회원가입</button>

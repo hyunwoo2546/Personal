@@ -135,7 +135,14 @@
 								<div class="form-group">
 								작성 날짜 : <input type="text" id="content" name="content" value="${replyList.regdate}" readonly="readonly" class="form-control"/>
 								</div>
-								  
+								
+								<span>파일 목록</span>
+								<div class="form-group" style="board:1px solid #dbdbdb;">
+									<c:forEach var = "file" items="${file}">
+										<a href = "#" onclick="fn_fileDown('${file.FILE_NO}'); return false;">${file.ORG_FILE_NAME }</a>(${file.FILE_SIZE}kb)<br/>
+									</c:forEach>
+								</div>
+								
 								<div>
 									<button type="button" class="replyUpdateBtn btn btn-warning" data-rno="${replyList.rno}">수정</button>
 									<button type="button" class="replyDeleteBtn btn btn-danger" data-rno="${replyList.rno}">삭제</button>
