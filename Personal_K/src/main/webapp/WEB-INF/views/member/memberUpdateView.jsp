@@ -38,7 +38,7 @@
 				$.ajax({
 					url : "/member/passChk",
 					type : "POST",
-					dateType : "json",
+					dataType : "json",
 					data : $("#updateForm").serializeArray(),
 					success: function(data){
 						

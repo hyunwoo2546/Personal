@@ -64,4 +64,10 @@ public class BoardServiceImpl implements BoardService{
 		boardDAO.delete(bno);
 	}
 	
+	/* # 첨부파일 조회 */
+	@Override
+	public List<Map<String, Object>> selectFileList(int bno) throws Exception {
+		return boardDAO.selectFileList(bno);
+	}
+	
 }

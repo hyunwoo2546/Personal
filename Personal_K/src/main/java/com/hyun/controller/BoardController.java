@@ -17,6 +17,7 @@ import com.hyun.vo.ReplyVO;
 import com.hyun.vo.SearchCriteria;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,6 +79,9 @@ public class BoardController {
 		
 		List<ReplyVO> replyList = replyservice.readReply(vo.getBno());
 		model.addAttribute("replyList", replyList);
+		
+		List<Map<String, Object>> fileList = service.selectFileList(vo.getBno());
+		model.addAttribute("file", fileList);
 
 		return "board/readView";
 	}
