@@ -78,6 +78,7 @@ public class MemberController {
 	}
 	
 	/* # 로그인 POST */
+	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberVO vo,HttpSession session, RedirectAttributes rttr) throws Exception {
 		

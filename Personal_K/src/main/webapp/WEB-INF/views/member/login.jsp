@@ -26,7 +26,7 @@
 		});
 		
 		/* # 무결성 체크 */
-		$("#loginCheck").on("click", function () {
+		$("#loginBtn").on("click", function () {
 			if($("#userId").val() == "") {
 				alert("아이디를 입력해주세요.");
 				$("#userId").focus();
@@ -37,10 +37,6 @@
 				$("#userPass").focus();
 				return false;
 			}
-		});
-		
-		/* # 로그인 버튼 */
-		$("#loginBtn").on("click", function () {
 			
 			var user= {
 					userId: $('#userId').val(),
@@ -52,17 +48,21 @@
 				url : '/member/login',
 				data : user,
 				success : function (data) {
-					if(data === true) {
+					if(data != null) {
 						alert("로그인 성공");
 						window.location.href = "/board/list";
-					} else {
-						alert('로그인 실패');
 					}
+				},
+				error : function () {
+					alert('err');
 				}
 			});
 			
-			
 		});
+		
+		/* # 로그인 버튼 */
+		/* $("#loginBtn").on("click", function () {
+		}); */
 	})
 </script>
 <body>
